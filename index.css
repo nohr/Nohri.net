@@ -28,10 +28,6 @@ body {
     margin: 0 auto;
   }
   
-  .plane img {
-    /* hide the img element */
-    display: none;
-  }
   
   /*** in case of error show the image ***/
   
@@ -42,7 +38,7 @@ body {
     justify-content: center;
   }
   
-  .no-curtains .plane img {
+  .no-curtains .plane video {
     display: block;
     max-width: 100%;
     object-fit: cover;
