@@ -1,5 +1,7 @@
-body {
+html {
     background-color: #000000;
+}
+body {
     /* make the body fit our viewport */
     position: relative;
     width: 100%;
