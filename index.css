@@ -28,6 +28,10 @@ body {
     margin: 0 auto;
   }
   
+  .plane video {
+    /* hide the video element */
+    display: none;
+  }
   
   /*** in case of error show the image ***/
   
