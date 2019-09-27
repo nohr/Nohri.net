@@ -27,77 +27,93 @@
   <script src="curtains.js"></script>
   <script src="index.js"></script>
 <!-- vertex shader -->
-<script id="plane-vs" type="x-shader/x-vertex">
+<script id="simple-plane-vs" type="x-shader/x-vertex">
     #ifdef GL_ES
     precision mediump float;
     #endif
-  
-    // those are the mandatory attributes that the lib sets
+
+    // default mandatory variables
     attribute vec3 aVertexPosition;
     attribute vec2 aTextureCoord;
-  
-    // those are mandatory uniforms that the lib sets and that contain our model view and projection matrix
+
     uniform mat4 uMVMatrix;
     uniform mat4 uPMatrix;
-  
-    // our texture matrix uniform (this is the lib default name, but it could be changed)
-    uniform mat4 uTextureMatrix0;
-  
-    // if you want to pass your vertex and texture coords to the fragment shader
+
+    // texture matrix
+    uniform mat4 simplePlaneVideoTextureMatrix;
+
+    // custom variables
     varying vec3 vVertexPosition;
     varying vec2 vTextureCoord;
-  
+
+    uniform float uTime;
+    uniform vec2 uResolution;
+    uniform vec2 uMousePosition;
+    uniform float uMouseMoveStrength;
+
+
     void main() {
-      // get the vertex position from its attribute
-      vec3 vertexPosition = aVertexPosition;
-      // set its position based on projection and model view matrix
-      gl_Position = uPMatrix * uMVMatrix * vec4(vertexPosition, 1.0);
-  
-      // set the varying variables
-      // thanks to the texture matrix we will be able to calculate accurate texture coords
-      // so that our texture will always fit our plane without being distorted
-      vTextureCoord = (uTextureMatrix0 * vec4(aTextureCoord, 0.0, 1.0)).xy;
-      vVertexPosition = vertexPosition;
+
+        vec3 vertexPosition = aVertexPosition;
+
+        // get the distance between our vertex and the mouse position
+        float distanceFromMouse = distance(uMousePosition, vec2(vertexPosition.x, vertexPosition.y));
+
+        // calculate our wave effect
+        float waveSinusoid = cos(5.0 * (distanceFromMouse - (uTime / 75.0)));
+
+        // attenuate the effect based on mouse distance
+        float distanceStrength = (0.4 / (distanceFromMouse + 0.4));
+
+        // calculate our distortion effect
+        float distortionEffect = distanceStrength * waveSinusoid * uMouseMoveStrength;
+
+        // apply it to our vertex position
+        vertexPosition.z +=  distortionEffect / 15.0;
+        vertexPosition.x +=  (distortionEffect / 15.0 * (uResolution.x / uResolution.y) * (uMousePosition.x - vertexPosition.x));
+        vertexPosition.y +=  distortionEffect / 15.0 * (uMousePosition.y - vertexPosition.y);
+
+           gl_Position = uPMatrix * uMVMatrix * vec4(vertexPosition, 1.0);
+
+           // varyings
+           vTextureCoord = (simplePlaneVideoTextureMatrix * vec4(aTextureCoord, 0.0, 1.0)).xy;
+           vVertexPosition = vertexPosition;
     }
-  </script>
-  <!-- fragment shader -->
-<script id="plane-fs" type="x-shader/x-fragment">
+</script>
+<!-- fragment shader -->
+<script id="simple-plane-fs" type="x-shader/x-fragment">
+
     #ifdef GL_ES
     precision mediump float;
     #endif
-  
-    // get our varying variables
+
+    uniform float uTime;
+    uniform vec2 uResolution;
+    uniform vec2 uMousePosition;
+
     varying vec3 vVertexPosition;
     varying vec2 vTextureCoord;
-  
-    // the uniform we declared inside our javascript
-    uniform float uTime;
-  
-    // our texture sampler (this is the lib default name, but it could be changed)
-    uniform sampler2D uSampler0;
-  
-    void main() {
-      // get our texture coords
-      vec2 textureCoord = vTextureCoord;
-  
-      // displace our pixels along both axis based on our time uniform and texture UVs
-      // this will create a kind of water surface effect
-      // try to comment a line or change the constants to see how it changes the effect
-      // reminder : textures coords are ranging from 0.0 to 1.0 on both axis
-      const float PI = 3.141592;
-  
-      textureCoord.x += (
-        sin(textureCoord.x * 10.0 + ((uTime * (PI / 3.0)) * 0.031))
-        + sin(textureCoord.y * 10.0 + ((uTime * (PI / 2.489)) * 0.017))
-        ) * 0.0075;
-  
-      textureCoord.y += (
-        sin(textureCoord.y * 20.0 + ((uTime * (PI / 2.023)) * 0.023))
-        + sin(textureCoord.x * 20.0 + ((uTime * (PI / 3.1254)) * 0.037))
-        ) * 0.0125;
-            
-      gl_FragColor = texture2D(uSampler0, textureCoord);
+
+    uniform sampler2D simplePlaneVideoTexture;
+
+    void main( void ) {
+
+        // get our texture coords
+        vec2 textureCoords = vec2(vTextureCoord.x, vTextureCoord.y);
+
+        // apply our texture
+        vec4 finalColor = texture2D(simplePlaneVideoTexture, textureCoords);
+
+        // fake shadows based on vertex position along Z axis
+        finalColor.rgb -= clamp(-vVertexPosition.z, 0.0, 1.0);
+        // fake lights based on vertex position along Z axis
+        finalColor.rgb += clamp(vVertexPosition.z, 0.0, 1.0);
+
+        // handling premultiplied alpha (useful if we were using a png with transparency)
+        finalColor = vec4(finalColor.rgb * finalColor.a, finalColor.a);
+
+        gl_FragColor = finalColor;
     }
-  </script>
+</script>
 </body>
 </html>
