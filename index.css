@@ -21,7 +21,7 @@ body {
     height: 100vh;
   }
   
-  .plane {
+  .curtain {
     /* define the size of your plane */
     width: 80%;
     max-width: 1400px;
@@ -31,7 +31,7 @@ body {
     margin: 0 auto;
   }
   
-  .plane video {
+  .curtain video {
     /* hide the video element */
     display: none;
   }
