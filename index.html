@@ -12,6 +12,7 @@
 
 </head>
 <body class="curtains-ready video-started">
+    <div class="enter-site">enter</div>
     <!-- div that will hold our WebGL canvas -->
     <div id="canvas"></div>
     <!-- div used to create our plane -->
@@ -27,7 +28,7 @@
   <script src="curtains.js"></script>
   <script src="index.js"></script>
 <!-- vertex shader -->
-<script id="simple-plane-vs" type="x-shader/x-vertex">
+<script id="plane-vs" type="x-shader/x-vertex">
     #ifdef GL_ES
     precision mediump float;
     #endif
@@ -81,7 +82,7 @@
     }
 </script>
 <!-- fragment shader -->
-<script id="simple-plane-fs" type="x-shader/x-fragment">
+<script id="plane-fs" type="x-shader/x-fragment">
 
     #ifdef GL_ES
     precision mediump float;
