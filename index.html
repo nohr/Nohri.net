@@ -14,22 +14,17 @@
 <body>
     <!-- div that will hold our WebGL canvas -->
     <div id="canvas"></div>
-  
     <!-- div used to create our plane -->
     <div class="plane">
-  
       <!-- image that will be used as a texture by our plane -->
-      <video autoplay>
-            <source src="IMG_6012.mp4" type="video/mp4">
+      <video src="IMG_6012.mp4" preload="true" loop>
           Your browser does not support the video tag.
-          </video>
-        
+        </video>
     </div>
-  
   </body>
 <body>
-  <script src="index.js"></script>
   <script src="curtains.js"></script>
+  <script src="index.js"></script>
 <!-- vertex shader -->
 <script id="plane-vs" type="x-shader/x-vertex">
     #ifdef GL_ES
