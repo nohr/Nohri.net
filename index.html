@@ -31,89 +31,47 @@
     #ifdef GL_ES
     precision mediump float;
     #endif
-
-    // default mandatory variables
+    // those are the mandatory attributes that the lib sets
     attribute vec3 aVertexPosition;
     attribute vec2 aTextureCoord;
-
+    // those are mandatory uniforms that the lib sets and that contain our model view and projection matrix
     uniform mat4 uMVMatrix;
     uniform mat4 uPMatrix;
-
-    // texture matrix
-    uniform mat4 simplePlaneVideoTextureMatrix;
-
-    // custom variables
+    // our texture matrix that will handle image cover
+    uniform mat4 uTextureMatrix0;
+    // pass your vertex and texture coords to the fragment shader
     varying vec3 vVertexPosition;
     varying vec2 vTextureCoord;
-
-    uniform float uTime;
-    uniform vec2 uResolution;
-    uniform vec2 uMousePosition;
-    uniform float uMouseMoveStrength;
-
-
     void main() {
-
-        vec3 vertexPosition = aVertexPosition;
-
-        // get the distance between our vertex and the mouse position
-        float distanceFromMouse = distance(uMousePosition, vec2(vertexPosition.x, vertexPosition.y));
-
-        // calculate our wave effect
-        float waveSinusoid = cos(5.0 * (distanceFromMouse - (uTime / 75.0)));
-
-        // attenuate the effect based on mouse distance
-        float distanceStrength = (0.4 / (distanceFromMouse + 0.4));
-
-        // calculate our distortion effect
-        float distortionEffect = distanceStrength * waveSinusoid * uMouseMoveStrength;
-
-        // apply it to our vertex position
-        vertexPosition.z +=  distortionEffect / 15.0;
-        vertexPosition.x +=  (distortionEffect / 15.0 * (uResolution.x / uResolution.y) * (uMousePosition.x - vertexPosition.x));
-        vertexPosition.y +=  distortionEffect / 15.0 * (uMousePosition.y - vertexPosition.y);
-
-           gl_Position = uPMatrix * uMVMatrix * vec4(vertexPosition, 1.0);
-
-           // varyings
-           vTextureCoord = (simplePlaneVideoTextureMatrix * vec4(aTextureCoord, 0.0, 1.0)).xy;
-           vVertexPosition = vertexPosition;
+    vec3 vertexPosition = aVertexPosition;
+    gl_Position = uPMatrix * uMVMatrix * vec4(vertexPosition, 1.0);
+    // set the varyings
+    // here we use our texture matrix to calculate the accurate texture coords
+    vTextureCoord = (uTextureMatrix0 * vec4(aTextureCoord, 0.0, 1.0)).xy;
+    vVertexPosition = vertexPosition;
     }
-</script>
+    </script>
 <!-- fragment shader -->
 <script id="plane-fs" type="x-shader/x-fragment">
-
     #ifdef GL_ES
     precision mediump float;
     #endif
-
-    uniform float uTime;
-    uniform vec2 uResolution;
-    uniform vec2 uMousePosition;
-
+    // get our varyings
     varying vec3 vVertexPosition;
     varying vec2 vTextureCoord;
-
-    uniform sampler2D simplePlaneVideoTexture;
-
-    void main( void ) {
-
-        // get our texture coords
-        vec2 textureCoords = vec2(vTextureCoord.x, vTextureCoord.y);
-
-        // apply our texture
-        vec4 finalColor = texture2D(simplePlaneVideoTexture, textureCoords);
-
-        // fake shadows based on vertex position along Z axis
-        finalColor.rgb -= clamp(-vVertexPosition.z, 0.0, 1.0);
-        // fake lights based on vertex position along Z axis
-        finalColor.rgb += clamp(vVertexPosition.z, 0.0, 1.0);
-
-        // handling premultiplied alpha (useful if we were using a png with transparency)
-        finalColor = vec4(finalColor.rgb * finalColor.a, finalColor.a);
-
-        gl_FragColor = finalColor;
+    // the uniform we declared inside our javascript
+    uniform float uTime;
+    // our texture sampler (default name, to use a different name please refer to the documentation)
+    uniform sampler2D uSampler0;
+    void main() {
+    // get our texture coords from our varying
+    vec2 textureCoord = vTextureCoord;
+    // displace our pixels along the X axis based on our time uniform
+    // textures coords are ranging from 0.0 to 1.0 on both axis
+    textureCoord.x += sin(textureCoord.y * 25.0) * cos(textureCoord.x * 25.0) * (cos(uTime / 50.0)) / 25.0;
+    // map our texture with the texture matrix coords
+    gl_FragColor = texture2D(uSampler0, textureCoord);
     }
-</script>
+    </script>
 </body>
 </html>
