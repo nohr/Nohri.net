@@ -3,115 +3,107 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-
   <title>nohri</title>
   <meta name="description" content="">
   <meta name="author" content="nohri">
-
   <link rel="stylesheet" href="index.css">
-
 </head>
-<body class="curtains-ready video-started">
+<body>
     <!-- div that will hold our WebGL canvas -->
     <div id="canvas"></div>
     <!-- div used to create our plane -->
-    <div class="plane start-playing">
+    <div class="curtain" data-vs-id="plane-vs" data-fs-id="plane-fs">
       <!-- image that will be used as a texture by our plane -->
       <video src="IMG_6012.mp4" preload="true" loop autoplay>
           Your browser does not support the video tag.
         </video>
     </div>
-  </body>
-<body>
 
   <script src="curtains.js"></script>
   <script src="index.js"></script>
-<!-- vertex shader -->
 <script id="plane-vs" type="x-shader/x-vertex">
-			#ifdef GL_ES
-			precision mediump float;
-			#endif
+  #ifdef GL_ES
+  precision mediump float;
+  #endif
 
-			// default mandatory variables
-			attribute vec3 aVertexPosition;
-			attribute vec2 aTextureCoord;
+  // those are the mandatory attributes that the lib sets
+  attribute vec3 aVertexPosition;
+  attribute vec2 aTextureCoord;
 
-			uniform mat4 uMVMatrix;
-    		uniform mat4 uPMatrix;
+  // those are mandatory uniforms that the lib sets and that contain our model view and projection matrix
+  uniform mat4 uMVMatrix;
+  uniform mat4 uPMatrix;
+      
+  uniform mat4 imageMatrix;
 
-			// custom variables
-			varying vec3 vVertexPosition;
-			varying vec2 vTextureCoord;
+  // our time uniform
+  uniform float uTime;
 
-			uniform float uMouseTime;
-			uniform vec2 uMousePosition;
-			uniform float uMouseMoveStrength;
+  // our mouse position uniform
+  uniform vec2 uMousePosition;
+
+  // our mouse strength
+  uniform float uMouseStrength;
+
+  // if you want to pass your vertex and texture coords to the fragment shader
+  varying vec3 vVertexPosition;
+  varying vec2 vTextureCoord;
+
+  void main() {
+    vec3 vertexPosition = aVertexPosition;
+
+    // get the distance between our vertex and the mouse position
+    float distanceFromMouse = distance(uMousePosition, vec2(vertexPosition.x, vertexPosition.y));
+
+    // this will define how close the ripples will be from each other. The bigger the number, the more ripples you'll get
+    float rippleFactor = 4.0;
+    // calculate our ripple effect
+    float rippleEffect = cos(rippleFactor * (distanceFromMouse - (uTime / 60.0)));
+
+    // calculate our distortion effect
+    float distortionEffect = rippleEffect * uMouseStrength;
+
+    // apply it to our vertex position
+    vertexPosition +=  distortionEffect / 15.0;
+
+       gl_Position = uPMatrix * uMVMatrix * vec4(vertexPosition, 1.0);
+
+    // varyings
+       vTextureCoord = (imageMatrix * vec4(aTextureCoord, 0.0, 1.0)).xy;
+       vVertexPosition = vertexPosition;
+  }
+    </script>
+    <script id="plane-fs" type="x-shader/x-fragment">
+  #ifdef GL_ES
+  precision mediump float;
+  #endif
+
+  // get our varyings
+  varying vec3 vVertexPosition;
+  varying vec2 vTextureCoord;
+
+  // our texture sampler (this is the lib default name, but it could be changed)
+  uniform sampler2D uSampler0;
+
+  void main() {
+    // get our texture coords
+    vec2 textureCoords = vTextureCoord;
+
+    // apply our texture
+    vec4 finalColor = texture2D(uSampler0, textureCoords);
+
+    // fake shadows based on vertex position along Z axis
+    finalColor.rgb -= clamp(-vVertexPosition.z, 0.0, 1.0);
+    // fake lights based on vertex position along Z axis
+    finalColor.rgb += clamp(vVertexPosition.z, 0.0, 1.0);
+
+    // handling premultiplied alpha (useful if we were using a png with transparency)
+    finalColor = vec4(finalColor.rgb * finalColor.a, finalColor.a);
+
+    gl_FragColor = finalColor;
+  }
+    </script>
 
 
-			void main() {
-
-				vec3 vertexPosition = aVertexPosition;
-
-				// fix the curtain on top (y coord ranges from top : 1.0 to bottom : -1.0)
-				float yCoordRatio = vertexPosition.y - 1.0;
-
-
-				float distanceFromMouse = distance(vec2(uMousePosition.x, 0.0), vec2(vertexPosition.x, 0.0));
-
-				float waveSinusoid = cos(10.0 * 1.5 * ((1.0 / (distanceFromMouse - 2.0)) - (uMouseTime / 500.0)));
-
-				float xAttenuation = ((2.0 - abs(uMousePosition.x - vertexPosition.x)) / 2.0);
-				float yAttenuation = ((-1.0 * uMousePosition.y) + 1.0) / 2.0;
-				if(uMousePosition.y <= -1.0) {
-					yAttenuation = yAttenuation + (uMousePosition.y + 1.0) * 1.5;
-				}
-				yAttenuation = clamp(yAttenuation, 0.0, 1.0);
-
-				float curtainEffect = yCoordRatio  * waveSinusoid * uMouseMoveStrength * xAttenuation * yAttenuation;
-
-				float xDisplacement = abs(yCoordRatio) * sign(vertexPosition.x);
-
-				vertexPosition.z +=  curtainEffect / 15.0;
-				vertexPosition.x +=  curtainEffect * 1.5 * xDisplacement / 120.0;
-
-			   	gl_Position = uPMatrix * uMVMatrix * vec4(vertexPosition, 1.0);
-
-			   	// varyings
-			   	vTextureCoord = aTextureCoord;
-			   	vVertexPosition = vertexPosition;
-			}
-        </script>
-<!-- fragment shader -->
-<script id="plane-fs" type="x-shader/x-fragment">
-    #ifdef GL_ES
-    precision mediump float;
-    #endif
-
-    varying vec3 vVertexPosition;
-    varying vec2 vTextureCoord;
-
-    uniform sampler2D curtainSampler;
-    uniform sampler2D titleSampler;
-
-
-    void main( void ) {
-
-        vec2 textureCoords = vec2(vTextureCoord.x, vTextureCoord.y);
-
-        // slides transitions
-        vec4 finalColor = texture2D(curtainSampler, textureCoords);
-        vec4 title = texture2D(titleSampler, textureCoords);
-
-        finalColor = mix(finalColor, title, title.a);
-
-        finalColor.rgb -= clamp(-vVertexPosition.z / 5.0, 0.0, 1.0);
-        finalColor.rgb += clamp(vVertexPosition.z / 5.0, 0.0, 1.0);
-
-        // handling premultiplied alpha
-        finalColor = vec4(finalColor.rgb * finalColor.a, finalColor.a);
-
-        gl_FragColor = finalColor;
-    }
-</script>
 </body>
 </html>
