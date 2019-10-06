@@ -22,11 +22,13 @@ body {
   }
   
   .curtain {
+    /* define the size of your plane */
     width: 80vw;
+    max-width: 1400px;
     height: 80vh;
-    margin: 10vh auto;
-    display: block;
     position: relative;
+    top: 10vh;
+    margin: 0 auto;
   }
   
   .curtain video {
