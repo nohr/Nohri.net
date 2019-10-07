@@ -38,14 +38,14 @@ body {
   
   /*** in case of error show the image ***/
   
-  .no-curtains .plane {
+  .no-curtains .curtain {
     overflow: hidden;
     display: flex;
     align-items: center;
     justify-content: center;
   }
   
-  .no-curtains .plane video {
+  .no-curtains .curtain video {
     display: block;
     max-width: 100%;
     object-fit: cover;
