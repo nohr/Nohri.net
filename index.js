@@ -16,6 +16,7 @@ window.onload = function(){
 
     // get our plane element
     var planeElement = document.getElementsByClassName("curtain");
+    //const planeElement = document.getElementById("main-curtain");
 
 
     // could be useful to get pixel ratio
@@ -25,6 +26,8 @@ window.onload = function(){
   var params = {
     widthSegments: 20,
     heightSegments: 20, // we now have 20*20*6 = 2400 vertices !
+    vertexShaderID: "plane-vs",
+    fragmentShaderID: "plane-fs",
     uniforms: {
       time: {
         name: "uTime", // uniform name that will be passed to our shaders
@@ -45,11 +48,19 @@ window.onload = function(){
   }
 
     // create our plane
+    //const plane = webGLCurtain.addPlane(planeElement);
     var planes = [];
 
+   /*if (planes) {
+      var myTexture = planes.createTexture("myTexture")
+      //console.log("test")
+      handlePlanes(plane)
+    }
+*/
+  
     for(var i = 0; i < planeElement.length; i++) {
         planes.push(webGLCurtain.addPlane(planeElement[i], params));
-
+        var myTexture = planes[i].createTexture("myTexture")
         handlePlanes(i);
     }
 
@@ -73,12 +84,11 @@ window.onload = function(){
               handleMovement(e, plane);
             });
             
-          
-
             // on resize, update the resolution uniform
             window.addEventListener("resize", function() {
                 plane.uniforms.resolution.value = [pixelRatio * planeElement[0].clientWidth, pixelRatio * planeElement[0].clientHeight];
             });
+            plane.playVideos();
 
         }).onRender(function() {
             plane.uniforms.time.value++;

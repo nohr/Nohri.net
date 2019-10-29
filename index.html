@@ -9,16 +9,18 @@
   <link rel="stylesheet" href="index.css">
 </head>
 <body>
+
     <!-- div that will hold our WebGL canvas -->
     <div id="canvas"></div>
     <!-- div used to create our plane -->
-    <div class="curtain" data-vs-id="plane-vs" data-fs-id="plane-fs">
+    <div class="curtain" id="main-curtain" data-vs-id="plane-vs" data-fs-id="plane-fs">
       <!-- image that will be used as a texture by our plane -->
-      <video src="IMG_6012.mp4" preload="true" loop autoplay>
+      <video src="IMG_6012.mp4" preload="true" data-sampler="simplePlaneVideoTexture" loop autoplay>
           Your browser does not support the video tag.
-        </video>
+      </video>
     </div>
 
+    <div id="enter-site"></div>
   <script src="curtains.js"></script>
   <script src="index.js"></script>
 <script id="plane-vs" type="x-shader/x-vertex">
@@ -33,8 +35,9 @@
   // those are mandatory uniforms that the lib sets and that contain our model view and projection matrix
   uniform mat4 uMVMatrix;
   uniform mat4 uPMatrix;
-      
-  uniform mat4 imageMatrix;
+  
+  // texture matrix
+  uniform mat4 simplePlaneVideoTextureMatrix;
 
   // our time uniform
   uniform float uTime;
@@ -69,7 +72,7 @@
        gl_Position = uPMatrix * uMVMatrix * vec4(vertexPosition, 1.0);
 
     // varyings
-       vTextureCoord = (imageMatrix * vec4(aTextureCoord, 0.0, 1.0)).xy;
+       vTextureCoord = (simplePlaneVideoTextureMatrix * vec4(aTextureCoord, 0.0, 1.0)).xy;
        vVertexPosition = vertexPosition;
   }
     </script>
@@ -83,14 +86,14 @@
   varying vec2 vTextureCoord;
 
   // our texture sampler (this is the lib default name, but it could be changed)
-  uniform sampler2D uSampler0;
+  uniform sampler2D simplePlaneVideoTexture;
 
   void main() {
     // get our texture coords
     vec2 textureCoords = vTextureCoord;
 
     // apply our texture
-    vec4 finalColor = texture2D(uSampler0, textureCoords);
+    vec4 finalColor = texture2D(simplePlaneVideoTexture, textureCoords);
 
     // fake shadows based on vertex position along Z axis
     finalColor.rgb -= clamp(-vVertexPosition.z, 0.0, 1.0);
