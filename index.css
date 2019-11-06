@@ -7,6 +7,11 @@ body {
   font-size: 11px;
   color: #ffffff;
 }
+@media only screen and (max-width: 600px) {
+  .wet {
+     font-size: 18px;
+  }
+}
 .dud {
   color: #757575;
 }
