@@ -7,9 +7,26 @@
   <meta name="description" content="">
   <meta name="author" content="nohri">
   <link rel="stylesheet" href="index.css">
+  <script src="blotter.min.js"></script>
+  <script src="fliesMaterial.js"></script>
 </head>
 <body>
+  <!--Blotter-->
+  <script>
+    var text = new Blotter.Text("nohri", {
+      family : "serif",
+      size : 120,
+      fill : "#171717"
+    });
 
+    var material = new Blotter.fliesMaterial();
+
+    var blotter = new Blotter(material, { texts : text });
+
+    var scope = blotter.forText(text);
+
+    scope.appendTo(document.body);
+  </script>
     <!-- div that will hold our WebGL canvas -->
     <div id="canvas"></div>
     <!-- div used to create our plane -->
@@ -75,8 +92,8 @@
        vTextureCoord = (simplePlaneVideoTextureMatrix * vec4(aTextureCoord, 0.0, 1.0)).xy;
        vVertexPosition = vertexPosition;
   }
-    </script>
-    <script id="plane-fs" type="x-shader/x-fragment">
+  </script>
+<script id="plane-fs" type="x-shader/x-fragment">
   #ifdef GL_ES
   precision mediump float;
   #endif
@@ -105,8 +122,6 @@
 
     gl_FragColor = finalColor;
   }
-    </script>
-
-
+  </script>
 </body>
 </html>
