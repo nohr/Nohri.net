@@ -1,6 +1,3 @@
-html {
-    background-color: #1e1e1e;
-}
 body {
     /* make the body fit our viewport
     position: relative;
@@ -23,7 +20,6 @@ body {
 }
 .wet{
   font-family: 'Menlo',sans-serif;
-  font-weight: 100;
   font-size: 11px;
   color: #ffffff;
 }
