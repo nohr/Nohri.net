@@ -16,9 +16,9 @@
     var text = new Blotter.Text("nohri", {
       family : "serif",
       size : 120,
-      fill : "#171717"
+      fill : "#ffffff"
     });
-
+    
     var material = new Blotter.FliesMaterial();
 
     var blotter = new Blotter(material, { texts : text });
@@ -27,8 +27,8 @@
 
     scope.appendTo(document.body);
   </script>
-    <!-- div that will hold our WebGL canvas -->
-    <div id="canvas"></div>
+    <!-- div that will hold our WebGL canvas 
+    <div id="canvas"></div> -->
     <!-- div used to create our plane -->
     <div class="curtain" id="main-curtain" data-vs-id="plane-vs" data-fs-id="plane-fs">
       <!-- image that will be used as a texture by our plane -->
