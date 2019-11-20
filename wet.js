@@ -146,7 +146,7 @@ var wet = `<div><span>
      $$$$                                *                            $$$$
      $$$$                               *                             $$$$
      $$$$                                                             $$$$
-     $$$$                          (noh-ree)                          $$$$
+     $$$$                           (no-ree)                          $$$$
      $$$$                                                             $$$$
      $$$$                                                             $$$$
      |$§,$'$            ^                             ^            $'$,§$|
@@ -209,7 +209,7 @@ var wet = `<div><span>
         ^§$$§s,     "If the facts does not fit the theory,        ,s§$$§^
              ^§§s,   then change the facts!" - Einstein         ,s§§^
                 $$                                            $$
-                 :        Last updated: 06. Nov 2019.         :
+                 :        Last updated: 19. Nov 2019.         :
                  .                                            .</span>
   </div>
 `;
