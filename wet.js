@@ -105,9 +105,9 @@ var wet = `<div><span>
      $$$$sSSSSSSssss···,_    ^^§§,           ,§§^^    _,···ssssSSSSSSs$$$$
      $$$$                                                             $$$$
      $$$$  Num. Disks : xx/03            Release Date : 11/06/2019    $$$$
-     $$$$    NFO Time : 12:33:17 PM          NFO Date : 11/06/2019    $$$$
+     $$$$    NFO Time : 12:33:17 PM          NFO Date : 10/02/2020    $$$$
      $$$$                                                             $$$$
-     $$$$     Cracker : noserunner                                    $$$$
+     $$$$     Cracker : studio nabla                                  $$$$
      $$$$    Supplier : no truce records                              $$$$
      $$$$                                                             $$$$
      $$$$                                                             $$$$
@@ -146,7 +146,7 @@ var wet = `<div><span>
      $$$$                                *                            $$$$
      $$$$                               *                             $$$$
      $$$$                                                             $$$$
-     $$$$                           (no-ree)                          $$$$
+     $$$$                          (noh-ree)                          $$$$
      $$$$                                                             $$$$
      $$$$                                                             $$$$
      |$§,$'$            ^                             ^            $'$,§$|
@@ -209,7 +209,7 @@ var wet = `<div><span>
         ^§$$§s,     "If the facts does not fit the theory,        ,s§$$§^
              ^§§s,   then change the facts!" - Einstein         ,s§§^
                 $$                                            $$
-                 :        Last updated: 19. Nov 2019.         :
+                 :        Last updated: 10. Feb 2020.         :
                  .                                            .</span>
   </div>
 `;
