@@ -5,7 +5,7 @@
 class TextScramble {
   constructor(el) {
     this.el = el;
-    this.chars = '!<>-_\\/[]{}—=+*^?#________';
+    this.chars = '+#:';
     this.update = this.update.bind(this);
   }
   setText(newText) {
@@ -55,23 +55,10 @@ class TextScramble {
     return this.chars[Math.floor(Math.random() * this.chars.length)];
   }}
 
-
-
-// ——————————————————————————————————————————————————
-// zoom
-// ——————————————————————————————————————————————————
-
-function zoom() {
-    document.body.style.zoom = "100%" 
-    }
-
-
-
 // ——————————————————————————————————————————————————
 // wet
 // ——————————————————————————————————————————————————
 var wet = `<div><span>
-
            .o oOOOOOOOo                                            OOOo
            Ob.OOOOOOOo  OOOo.      oOOo.                      .adOOOOOOO
            OboO"""""""""""".OOo. .oOOOOOo.    OOOo.oOOOOOo.."""""""""'OO
@@ -105,10 +92,10 @@ var wet = `<div><span>
      $$$$sSSSSSSssss···,_    ^^§§,           ,§§^^    _,···ssssSSSSSSs$$$$
      $$$$                                                             $$$$
      $$$$  Num. Disks : xx/03            Release Date : 11/06/2019    $$$$
-     $$$$    NFO Time : 12:33:17 PM          NFO Date : 10/02/2020    $$$$
+     $$$$    NFO Time : 23:24:27             NFO Date : 03/20/2020    $$$$
      $$$$                                                             $$$$
-     $$$$     Cracker : studio nabla                                  $$$$
-     $$$$    Supplier : no truce records                              $$$$
+     $$$$     Cracker : <a href="https://studionabla.com/">studio nabla</a>                                  $$$$
+     $$$$    Supplier : <a href="https://www.notruceway.com/">no truce records</a>                              $$$$
      $$$$                                                             $$$$
      $$$$                                                             $$$$
      $$$$                                                             $$$$
@@ -168,25 +155,24 @@ var wet = `<div><span>
      $$$$                  ░     ░          ░  ░ ░ ░                  $$$$
      $$$$                                        ░                    $$$$
      $$$$                         BUY MUSIC                           $$$$
-     $$$$                                                             $$$$          
+     $$$$                                                             $$$$
      $$$$  *bandcamp*                                                 $$$$
-     $$$$    URL : https://nohri.bandcamp.com                         $$$$
+     $$$$    URL : <a href="https://nohri.bandcamp.com">https://nohri.bandcamp.com</a>                         $$$$
      $$$$                                                             $$$$
      $$$$                                                             $$$$
      $$$$                                                             $$$$
      $$$$                        STREAM MUSIC                         $$$$
      $$$$                                                             $$$$
      $$$$  *apple music*                                              $$$$
-     $$$$    URL : https://apple.co/32ni7UE                           $$$$
-     $$$$   cnct : @kawaiite                                          $$$$
+     $$$$    URL : <a href="https://apple.co/32ni7UE">https://apple.co/32ni7UE</a>                           $$$$
      $$$$                                                             $$$$
      $$$$                                                             $$$$
      $$$$  *spotify*                                                  $$$$
-     $$$$    URL : https://spoti.fi/32ni0bG                           $$$$
+     $$$$    URL : <a href="https://spoti.fi/32ni0bG">https://spoti.fi/32ni0bG</a>                           $$$$
      $$$$                                                             $$$$
      $$$$                                                             $$$$
      $$$$  *soundcloud*                                               $$$$
-     $$$$    URL : https://soundcloud.com/7nohri                      $$$$
+     $$$$    URL : <a href="https://soundcloud.com/7nohri">https://soundcloud.com/7nohri</a>                      $$$$
      $$$$                                                             $$$$
      $$$$                                                             $$$$
      $$$$                                                             $$$$
@@ -199,24 +185,31 @@ var wet = `<div><span>
      $$$$  If you want to contact me for any reason, then feel free   $$$$
      $$$$       to do so using the email supplied below.              $$$$
      $$$$                                                             $$$$
-     $$$$                  email:nohrihere@gmail.com                  $$$$
+     $$$$                     <a href="mailto:nohrihere@gmail.com">nohrihere@gmail.com</a>                     $$$$
       $§,$'$            ^                             ^            $'$,§$
      $' |$ $ $$s,^§, :  :::::: ..             .. ::::::  : ,§^ ,$$ $ $|  $
     _,,ÖssSSSSSSssss···,_    ^^§§,  . . . .  ,§§^^    _,···ssssSSSSSSssÖ,,_
 ,-§^  ,s§$$§^          ^§§s,     . . . : . . .     ,s§§^          ^§$$§s,  ^§-,
      ,§ $'                  '            '         '                  '$ §,
-    ^§$$§s,                                                          ,s§$$§^
-        ^§$$§s,     "If the facts does not fit the theory,        ,s§$$§^
-             ^§§s,   then change the facts!" - Einstein         ,s§§^
+    ^§$$§s,       😂😂😂😂😂😂😂😂😂😂😂😂😂😂😂😂😂😂😂         ,s§$$§^
+        ^§$$§s,     😂😂😂😂😂😂😂😂😂😂😂😂😂😂😂😂😂        ,s§$$§^
+             ^§§s,   😂😂😂😂😂😂😂😂😂😂😂😂😂😂😂😂        ,s§§^
                 $$                                            $$
-                 :        Last updated: 10. Feb 2020.         :
+                 :        Last updated: 20. Mar 2020.         :
                  .                                            .</span>
   </div>
 `;
 
-const phrases = [
-wet];
+function zoomOutMobile() {
+  var viewport = document.querySelector('meta[name="viewport"]');
 
+  if ( viewport ) {
+    viewport.content = "initial-scale=0.9";
+    viewport.content = "width=425";
+  }
+}
+
+const phrases = [wet];
 const el = document.querySelector('.wet');
 const fx = new TextScramble(el);
 
@@ -226,7 +219,7 @@ const next = () => {
     setTimeout(next, 24000);
   });
   counter = (counter + 1) % phrases.length;
-    zoom();
+    zoomOutMobile();
 };
 
 next();

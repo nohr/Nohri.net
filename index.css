@@ -1,12 +1,58 @@
+* {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+@media (prefers-color-scheme: dark) {
+  body {
+    background-color: #212121;
+  }
+  .wet{
+    color: #ffffff;
+  }
+  a {
+    color: #ffffff;
+   }
+}
+@media (prefers-color-scheme: light) {
+  body {
+    background-color: #ffffff;
+  }
+  .wet{
+    color: #000000;
+  }
+  a {
+    color: #000000;
+   }
+}
+
+
 body {
-  background: #212121;
   height: 100%;
 }
 .wet{
   font-family: 'Menlo',sans-serif;
   font-size: 11px;
-  color: #ffffff;
 }
 .dud {
   color: #757575;
+}
+a {
+ text-decoration: underline;
+}
+
+a:hover {
+  background: linear-gradient(to right, #ff6059 20%, #ffbe2f 40%, #29cb42 60%, #ff6059 80%);
+  background-size: 200% auto;
+  color: #000;
+  background-clip: text;
+  text-fill-color: transparent;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: shine 1s linear infinite;
+}
+
+@keyframes shine {
+  to {
+    background-position: 200% center;
+  }
 }
