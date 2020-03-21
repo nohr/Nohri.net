@@ -41,7 +41,7 @@ a {
 }
 
 a:hover {
-  background: linear-gradient(to right, #ff6059 20%, #ffbe2f 40%, #29cb42 60%, #ff6059 80%);
+  background: linear-gradient(to right, #ff6059 34%, #ffbe2f 66%, #29cb42 99%);
   background-size: 200% auto;
   color: #000;
   background-clip: text;

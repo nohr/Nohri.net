@@ -5,7 +5,7 @@
 class TextScramble {
   constructor(el) {
     this.el = el;
-    this.chars = '+#:😂';
+    this.chars = '+#:😂😂';
     this.update = this.update.bind(this);
   }
   setText(newText) {
@@ -107,33 +107,29 @@ var wet = `<div><span>
      $$$$  l of close collaborators and friends. His ensuing EP, MT1  $$$$
      $$$$  , was a more house & break-beat inspired record that sho-  $$$$
      $$$$  wcased Nohri’s ability to weave club-heavy percussion wi-  $$$$
-     $$$$  th more ethereal and unorthodox melodies. In early 2020,   $$$$
-     $$$$  Nohri plans to release a prequel to his most ambitious a-  $$$$
-     $$$$  lbum yet, wetWare.                                         $$$$
+     $$$$  th more ethereal and unorthodox melodies to boot. In 2020 $$$$
+     $$$$  Nohri plans to release a prequel to his album yet, wetWare.   $$$$
      $$$$                                                             $$$$
      $$$$sSSSSSSssss···,_    ^^§§,  N A M E  ,§§^^    _,···ssssSSSSSSs$$$$
      $$$$                                                             $$$$
-     $$$$                             *                               $$$$
-     $$$$                           **                     *          $$$$
-     $$$$                           **                    ***         $$$$
-     $$$$                           **                     *          $$$$
-     $$$$                   ****    **      ***  ****                 $$$$
-     $$$$    ***  ****     * ***  * **  ***  **** **** * ***          $$$$
-     $$$$     **** **** * *   ****  ** * ***  **   ****   ***         $$$$
-     $$$$      **   **** **    **   ***   *** **           **         $$$$
-     $$$$      **    **  **    **   **     ** **           **         $$$$
-     $$$$      **    **  **    **   **     ** **           **         $$$$
-     $$$$      **    **  **    **   **     ** **           **         $$$$
-     $$$$      **    **  **    **   **     ** **           **         $$$$
-     $$$$      **    **   ******    **     ** ***          **         $$$$
-     $$$$      ***   ***   ****     **     **  ***         *** *      $$$$
-     $$$$       ***   ***            **    **               ***       $$$$
-     $$$$                                  *                          $$$$
-     $$$$                                 *                           $$$$
-     $$$$                                *                            $$$$
-     $$$$                               *                             $$$$
      $$$$                                                             $$$$
-     $$$$                          (noh-ree)                          $$$$
+     $$$$                                                             $$$$
+     $$$$        --/osyyhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhys+:-        $$$$
+     $$$$     -/ymMNNdhhyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyhdNNMmy/      $$$$
+     $$$$    /dMNh+:                                       :+hNMd/    $$$$
+     $$$$   oMMd:                     :hhh-              -hhh:/dMN+   $$$$
+     $$$$  /MMd- ://:-:+::    :/+/:-  /MMM+://:-  ///-:/:-yyy- -mMN:  $$$$
+     $$$$  yMM/  hMMNddMMNo /dNmodMmo /MMMNhmMMm:-MMMmdd/:MMM:  oMMs  $$$$
+     $$$$  yMM/  hMMN- dMMh NMMs /MMM-/MMMy :MMM+-MMMs   :MMM:  +MMs  $$$$
+     $$$$  /MMh  hMMm  dMMh sNMd:yMMy /MMMo -MMM+-MMM+   :MMM: -dMM:  $$$$
+     $$$$   sMMy-+sso  +ss+  :+ssso:  -sss/  sss:-sss:   -sss-:hMMo   $$$$
+     $$$$    +mMNy/-                                       -/yNMm/    $$$$
+     $$$$     -odMMNdhysssssssssssssssssssssssssssssssssyhmNMNh+-     $$$$
+     $$$$        -/syhdddddddddddddddddddddddddddddddddddhyo/-        $$$$
+     $$$$                                                             $$$$
+     $$$$                                                             $$$$
+     $$$$                                                             $$$$
+     $$$$                          (noh-REE)                          $$$$
      $$$$                                                             $$$$
      $$$$                                                             $$$$
      |$§,$'$            ^                             ^            $'$,§$|
@@ -150,10 +146,10 @@ var wet = `<div><span>
      $$$$           ▒██    ▒██▓▓█  ░██░ ▒   ██░██▒▓▓▄ ▄██▒            $$$$
      $$$$           ▒██▒   ░██▒▒█████▓▒██████▒░██▒ ▓███▀ ░            $$$$
      $$$$           ░ ▒░   ░  ░▒▓▒ ▒ ▒▒ ▒▓▒ ▒ ░▓ ░ ░▒ ▒  ░            $$$$
-     $$$$           ░  ░      ░░▒░ ░ ░░ ░▒  ░ ░▒ ░ ░  ▒               $$$$
-     $$$$           ░      ░   ░░░ ░ ░░  ░  ░  ▒ ░                    $$$$
-     $$$$                  ░     ░          ░  ░ ░ ░                  $$$$
-     $$$$                                        ░                    $$$$
+     $$$$           ░  ░      ░░▒░ ░  ░ ░▒  ░ ░▒ ░ ░  ▒               $$$$
+     $$$$           ░      ░   ░░░ ░  ░  ░  ░  ▒ ░                    $$$$
+     $$$$                        ░             ░                      $$$$
+     $$$$                                                             $$$$
      $$$$                         BUY MUSIC                           $$$$
      $$$$                                                             $$$$
      $$$$  *bandcamp*                                                 $$$$
@@ -191,9 +187,9 @@ var wet = `<div><span>
     _,,ÖssSSSSSSssss···,_    ^^§§,  😂😂😂😂 ,§§^^    _,···ssssSSSSSSssÖ,,_
 ,-§^  ,s§$$§^          ^§§s,     . . . : . . .     ,s§§^          ^§$$§s,  ^§-,
      ,§ $'                  '            '         '                  '$ §,
-    ^§$$§s,       😂😂😂😂😂😂😂😂😂😂😂😂😂😂😂😂😂😂😂         ,s§$$§^
+<a href="/nohri.xyz" style="text-decoration:none">    ^§$$§s,       😂😂😂😂😂😂😂😂😂😂😂😂😂😂😂😂😂😂😂         ,s§$$§^
         ^§$$§s,     😂😂😂😂😂😂😂😂😂😂😂😂😂😂😂😂😂        ,s§$$§^
-             ^§§s,   😂😂😂😂😂😂😂😂😂😂😂😂😂😂😂😂        ,s§§^
+             ^§§s,   😂😂😂😂😂😂😂😂😂😂😂😂😂😂😂😂       ,s§§^</a> 
                 $$                                            $$
                  :        Last updated: 20. Mar 2020.         :
                  .                                            .</span>
