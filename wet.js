@@ -59,30 +59,30 @@ class TextScramble {
 // wet
 // ——————————————————————————————————————————————————
 var wet = `<div><span>
-           .o oOOOOOOOo                                            OOOo
-           Ob.OOOOOOOo  OOOo.      oOOo.                      .adOOOOOOO
-           OboO"""""""""""".OOo. .oOOOOOo.    OOOo.oOOOOOo.."""""""""'OO
-           OOP.oOOOOOOOOOOO "POOOOOOOOOOOo.   "OOOOOOOOOP,OOOOOOOOOOOB'
-            O'OOOO'      OOOOo"OOOOOOOOOOO  .adOOOOOOOOO"oOOO'     OOOOo
-           .OOOO'             OOOOOOOOOOOOOOOOOOOOOOOOOO'             OO
-           OOOOO                 '"OOOOOOOOOOOOOOOO"                 oOO
-          oOOOOOba.                .adOOOOOOOOOOba               .adOOOOo.
-         oOOOOOOOOOOOOOba.    .adOOOOOOOOOO@^OOOOOOOba.     .adOOOOOOOOOOOO
-        OOOOOOOOOOOOOOOOO.OOOOOOOOOOOOOO"   '"OOOOOOOOOOOOO.OOOOOOOOOOOOOO
-        "OOOO"       "YOoOOOOOOOOOOOOO"   .   '"OOOOOOOOOOOOoOY"     "OOO"
-           Y           'OOOOOOOOOOOOOO: .oOOo. :OOOOOOOOOOO?'         : 
-           :            .oO%OOOOOOOOOOo.OOOOOO.oOOOOOOOOOOOO?         .
-           .            oOOP"%OOOOOOOOoOOOOOOO?oOOOOO?OOOO"OOo
-                        '%o  OOOO"%OOOO%"%OOOOO"OOOOOO"OOO':
-                              $"   OOOO' O"Y '  OOOO'  o             .
-          .                  .     OP"          : o     .
-                      :::       :::::::::::::::::::::::::::      
-                      :+:       :+::+:           :+:    :+:      
-                      +:+       +:++:+           +:+    +:+         
-                      +#+  +:+  +#++#++:++#      +#+    +#+  +:+ 
-                      +#+ +#+#+ +#++#+           +#+    +#+ +#+#   
-                       #+#+# #+#+# #+#           #+#     #+#+# #  
-                         ###   ###  ##########    ###      ###   
+                   :::       :::::::::::::::::::::::::::     
+                   :+:       :+::+:           :+:    :+:     
+                   +:+       +:++:+           +:+    +:+        
+                   +#+  +:+  +#++#++:++#      +#+    +#+  +: 
+                   +#+ +#+#+ +#++#+           +#+    +#+ +#+   
+                    #+#+# #+#+# #+#           #+#     #+#+#   
+                      ###   ###  ##########    ###      ###  
+         .o oOOOOOOOo                                            OOOo
+         Ob.OOOOOOOo  OOOo.      oOOo.                      .adOOOOOOO
+         OboO"""""""""""".OOo. .oOOOOOo.    OOOo.oOOOOOo.."""""""""'OO
+         OOP.oOOOOOOOOOOO "POOOOOOOOOOOo.   "OOOOOOOOOP,OOOOOOOOOOOB'
+          O'OOOO'      OOOOo"OOOOOOOOOOO  .adOOOOOOOOO"oOOO'     OOOOo
+         .OOOO'             OOOOOOOOOOOOOOOOOOOOOOOOOO'             OO
+         OOOOO                 '"OOOOOOOOOOOOOOOO"                 oOO
+        oOOOOOba.                .adOOOOOOOOOOba               .adOOOOo.
+       oOOOOOOOOOOOOOba.    .adOOOOOOOOOO@^OOOOOOOba.     .adOOOOOOOOOOOO
+      OOOOOOOOOOOOOOOOO.OOOOOOOOOOOOOO"   '"OOOOOOOOOOOOO.OOOOOOOOOOOOOO
+      "OOOO"       "YOoOOOOOOOOOOOOO"   .   '"OOOOOOOOOOOOoOY"     "OOO"
+         Y           'OOOOOOOOOOOOOO: .oOOo. :OOOOOOOOOOO?'         : 
+         :            .oO%OOOOOOOOOOo.OOOOOO.oOOOOOOOOOOOO?         .     
+         .            oOOP"%OOOOOOOOoOOOOOOO?oOOOOO?OOOO"OOo              
+                      '%o  OOOO"%OOOO%"%OOOOO"OOOOOO"OOO':                
+                            $"   OOOO' O"Y '  OOOO'  o             .      
+        .                  .     OP"          : o     .                  
     _,,ÖssSSSSSSssss···,_    ^^§§,    . .    ,§§^^    _,···ssssSSSSSSssÖ,,_
 ,-§^  ,s§$$§^          ^§§s,        2 0 2 0        ,s§§^.         ^§$$§s,  ^§-, 
      ,§ $'                  '         . .         '                  '$ §,
@@ -188,7 +188,7 @@ var wet = `<div><span>
      $$$$                     <a href="mailto:nohrihere@gmail.com">nohrihere@gmail.com</a>                     $$$$
       $§,$'$            ^                             ^            $'$,§$
      $' |$ $ $$s,^§, :  :::::: ..             .. ::::::  : ,§^ ,$$ $ $|  $
-    _,,ÖssSSSSSSssss···,_    ^^§§,  . . . .  ,§§^^    _,···ssssSSSSSSssÖ,,_
+    _,,ÖssSSSSSSssss···,_    ^^§§,  😂😂😂😂 ,§§^^    _,···ssssSSSSSSssÖ,,_
 ,-§^  ,s§$$§^          ^§§s,     . . . : . . .     ,s§§^          ^§$$§s,  ^§-,
      ,§ $'                  '            '         '                  '$ §,
     ^§$$§s,       😂😂😂😂😂😂😂😂😂😂😂😂😂😂😂😂😂😂😂         ,s§$$§^
