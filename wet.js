@@ -201,7 +201,7 @@ function zoomOutMobile() {
 
   if ( viewport ) {
     viewport.content = "initial-scale=0.9";
-    viewport.content = "width=425";
+    viewport.content = "width=device-width";
   }
 }
 
