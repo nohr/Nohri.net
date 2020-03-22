@@ -94,9 +94,11 @@ var wet = `<div><span>
      $$$$  Num. Disks : xx/03            Release Date : 11/06/2019    $$$$
      $$$$    NFO Time : 22:47:27             NFO Date : 03/21/2020    $$$$
      $$$$                                                             $$$$
-     $$$$     Cracker : <a href="https://studionabla.com/">studio nabla</a>                                  $$$$
-     $$$$    Supplier : <a href="https://www.notruceway.com/">no truce records</a>                              $$$$
      $$$$                                                             $$$$
+     $$$$     Cracker : <a href="https://studionabla.com/">studio nabla</a>                                  $$$$
+     $$$$                                                             $$$$
+     $$$$                                                             $$$$
+     $$$$    Supplier : <a href="https://www.notruceway.com/">no truce records</a>                              $$$$
      $$$$                                                             $$$$
      $$$$                                                             $$$$
      $$$$sSSSSSSssss···,_    ^^§§,  I N F O  ,§§^^    _,···ssssSSSSSSs$$$$
