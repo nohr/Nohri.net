@@ -5,7 +5,7 @@
 class TextScramble {
   constructor(el) {
     this.el = el;
-    this.chars = '+#:😂😂';
+    this.chars = '+#:😂';
     this.update = this.update.bind(this);
   }
   setText(newText) {
@@ -92,7 +92,7 @@ var wet = `<div><span>
      $$$$sSSSSSSssss···,_    ^^§§,           ,§§^^    _,···ssssSSSSSSs$$$$
      $$$$                                                             $$$$
      $$$$  Num. Disks : xx/03            Release Date : 11/06/2019    $$$$
-     $$$$    NFO Time : 23:24:27             NFO Date : 03/20/2020    $$$$
+     $$$$    NFO Time : 22:47:27             NFO Date : 03/21/2020    $$$$
      $$$$                                                             $$$$
      $$$$     Cracker : <a href="https://studionabla.com/">studio nabla</a>                                  $$$$
      $$$$    Supplier : <a href="https://www.notruceway.com/">no truce records</a>                              $$$$
@@ -107,8 +107,8 @@ var wet = `<div><span>
      $$$$  l of close collaborators and friends. His ensuing EP, MT1  $$$$
      $$$$  , was a more house & break-beat inspired record that sho-  $$$$
      $$$$  wcased Nohri’s ability to weave club-heavy percussion wi-  $$$$
-     $$$$  th more ethereal and unorthodox melodies to boot. In 2020 $$$$
-     $$$$  Nohri plans to release a prequel to his album yet, wetWare.   $$$$
+     $$$$  th more ethereal and unorthodox melodies to boot. In 2020  $$$$
+     $$$$  Nohri plans to release a prequel to his album, wetWare.    $$$$
      $$$$                                                             $$$$
      $$$$sSSSSSSssss···,_    ^^§§,  N A M E  ,§§^^    _,···ssssSSSSSSs$$$$
      $$$$                                                             $$$$
@@ -191,7 +191,7 @@ var wet = `<div><span>
         ^§$$§s,     😂😂😂😂😂😂😂😂😂😂😂😂😂😂😂😂😂        ,s§$$§^
              ^§§s,   😂😂😂😂😂😂😂😂😂😂😂😂😂😂😂😂       ,s§§^</a> 
                 $$                                            $$
-                 :        Last updated: 20. Mar 2020.         :
+                 :        Last updated: 21. Mar 2020.         :
                  .                                            .</span>
   </div>
 `;
