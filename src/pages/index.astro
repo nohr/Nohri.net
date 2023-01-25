@@ -1,0 +1,55 @@
+---
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>nohri.net</title>
+    <meta
+      name="description"
+      content="Homepage for electronic music producer, Nohri."
+    />
+    <meta name="author" content="nohri" />
+    <meta name="generator" content={Astro.generator} />
+    <link rel="stylesheet" href="/index.css" />
+  </head>
+  <body class="bg-white dark:bg-[#212121] h-full">
+    <div>
+      <pre class="ascii dark:text-white text-black font-mono"></pre>
+    </div>
+  </body>
+</html>
+<script>
+  import { ascii } from "../ascii";
+  import TextScramble from "../TextScramble";
+
+  function zoomOutMobile() {
+    const viewport: HTMLMetaElement | null = document.querySelector(
+      'meta[name="viewport"]'
+    );
+
+    if (viewport) {
+      viewport.content = "initial-scale=0.9";
+      viewport.content = "width=425";
+    }
+  }
+
+  const phrases = [ascii];
+  const el: HTMLElement | null = document.querySelector(".ascii");
+  if (!el) {
+    throw new Error("no element found");
+  }
+  const fx = new TextScramble(el);
+
+  let counter = 0;
+  const next = () => {
+    fx.setText(phrases[counter]).then(() => {
+      setTimeout(next, 24000);
+    });
+    counter = (counter + 1) % phrases.length;
+    zoomOutMobile();
+  };
+
+  next();
+</script>

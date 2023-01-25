@@ -1,65 +1,13 @@
-// ——————————————————————————————————————————————————
-// TextScramble
-// ——————————————————————————————————————————————————
+const lastChanged = '01/26/2023';
+const lastUpdated = '26. Jan 2023';
+const email = `nohrihere@gmail.com`
 
-class TextScramble {
-  constructor(el) {
-    this.el = el;
-    this.chars = '+#:😂';
-    this.update = this.update.bind(this);
-  }
-  setText(newText) {
-    const oldText = this.el.innerText;
-    const length = Math.max(oldText.length, newText.length);
-    const promise = new Promise(resolve => this.resolve = resolve);
-    this.queue = [];
-    for (let i = 0; i < length; i++) {
-      const from = oldText[i] || '';
-      const to = newText[i] || '';
-      const start = Math.floor(Math.random() * 20);
-      const end = start + Math.floor(Math.random() * 20);
-      this.queue.push({ from, to, start, end });
-    }
-    cancelAnimationFrame(this.frameRequest);
-    this.frame = 0;
-    this.update();
-    return promise;
-  }
-  update() {
-    let output = '';
-    let complete = 0;
-    for (let i = 0, n = this.queue.length; i < n; i++) {
-      let { from, to, start, end, char } = this.queue[i];
-      if (this.frame >= end) {
-        complete++;
-        output += to;
-      } else if (this.frame >= start) {
-        if (!char || Math.random() < 0.28) {
-          char = this.randomChar();
-          this.queue[i].char = char;
-        }
-        output += `<span class="dud">${char}</span>`;
-      } else {
-        output += from;
-      }
-    }
-    this.el.innerHTML = output;
-    if (complete === this.queue.length) {
-      this.resolve();
-    } else {
-      this.frameRequest = requestAnimationFrame(this.update);
-      this.frame++;
-    }
-  }
-  randomChar() {
-    return this.chars[Math.floor(Math.random() * this.chars.length)];
-  }
-}
+const bandcamp = 'https://nohri.bandcamp.com';
+const soundcloud = 'https://soundcloud.com/7nohri';
+const appleMusic = 'https://apple.co/32ni7UE';
+const spotify = 'https://spoti.fi/32ni0bG';
 
-// ——————————————————————————————————————————————————
-// wet
-// ——————————————————————————————————————————————————
-var wet = `<div><span>
+export const ascii = `<div><span>
                    :::       :::::::::::::::::::::::::::     
                    :+:       :+::+:           :+:    :+:     
                    +:+       +:++:+           +:+    +:+        
@@ -85,7 +33,7 @@ var wet = `<div><span>
                             $"   OOOO' O"Y '  OOOO'  o             .      
         .                  .     OP"          : o     .                  
     _,,ÖssSSSSSSssss···,_    ^^§§,    . .    ,§§^^    _,···ssssSSSSSSssÖ,,_
-,-§^  ,s§$$§^          ^§§s,        2 0 2 0        ,s§§^.         ^§$$§s,  ^§-, 
+,-§^  ,s§$$§^          ^§§s,        2 0 2 3        ,s§§^.         ^§$$§s,  ^§-, 
      ,§ $'                  '         . .         '                  '$ §,
      $$$$                                                             $$$$
      $$$$                     welcome 2 nohri.net!                    $$$$
@@ -93,10 +41,10 @@ var wet = `<div><span>
      $$$$sSSSSSSssss···,_    ^^§§,           ,§§^^    _,···ssssSSSSSSs$$$$
      $$$$                                                             $$$$
      $$$$  Num. Disks : xx/03            Release Date : 11/06/2019    $$$$
-     $$$$    NFO Time : 16:09:27             NFO Date : 03/23/2022    $$$$
+     $$$$    NFO Time : 16:09:27             NFO Date : ${lastChanged}    $$$$
      $$$$                                                             $$$$
      $$$$                                                             $$$$
-     $$$$     Cracker : <a href="https://nabla.ooo/">nabla ltd.</a>                                    $$$$
+     $$$$     Cracker : <a href="https://paredol.com/">paredol</a>                                       $$$$
      $$$$                                                             $$$$
      $$$$                                                             $$$$
      $$$$    Supplier : N/A                                           $$$$
@@ -110,7 +58,7 @@ var wet = `<div><span>
      $$$$  l of close collaborators and friends. His ensuing EP, MT1  $$$$
      $$$$  , was a more house & break-beat inspired record that sho-  $$$$
      $$$$  wcased Nohri’s ability to weave club-heavy percussion wi-  $$$$
-     $$$$  th more ethereal and unorthodox melodies to boot. In 2022  $$$$
+     $$$$  th more ethereal and unorthodox melodies to boot. In 2023  $$$$
      $$$$  Nohri plans to release his long-awaited album, wetWare.    $$$$
      $$$$                                                             $$$$
      $$$$sSSSSSSssss···,_    ^^§§,  N A M E  ,§§^^    _,···ssssSSSSSSs$$$$
@@ -156,22 +104,22 @@ var wet = `<div><span>
      $$$$                         BUY MUSIC                           $$$$
      $$$$                                                             $$$$
      $$$$  *bandcamp*                                                 $$$$
-     $$$$    URL : <a href="https://nohri.bandcamp.com">https://nohri.bandcamp.com</a>                         $$$$
+     $$$$    URL : <a href="${bandcamp}">${bandcamp}</a>                         $$$$
      $$$$                                                             $$$$
      $$$$                                                             $$$$
      $$$$                                                             $$$$
      $$$$                        STREAM MUSIC                         $$$$
      $$$$                                                             $$$$
      $$$$  *apple music*                                              $$$$
-     $$$$    URL : <a href="https://apple.co/32ni7UE">https://apple.co/32ni7UE</a>                           $$$$
+     $$$$    URL : <a href="${appleMusic}">${appleMusic}</a>                           $$$$
      $$$$                                                             $$$$
      $$$$                                                             $$$$
      $$$$  *spotify*                                                  $$$$
-     $$$$    URL : <a href="https://spoti.fi/32ni0bG">https://spoti.fi/32ni0bG</a>                           $$$$
+     $$$$    URL : <a href="${spotify}">${spotify}</a>                           $$$$
      $$$$                                                             $$$$
      $$$$                                                             $$$$
      $$$$  *soundcloud*                                               $$$$
-     $$$$    URL : <a href="https://soundcloud.com/7nohri">https://soundcloud.com/7nohri</a>                      $$$$
+     $$$$    URL : <a href="${soundcloud}">${soundcloud}</a>                      $$$$
      $$$$                                                             $$$$
      $$$$                                                             $$$$
      $$$$                                                             $$$$
@@ -184,41 +132,17 @@ var wet = `<div><span>
      $$$$  If you want to contact me for any reason, then feel free   $$$$
      $$$$       to do so using the email supplied below.              $$$$
      $$$$                                                             $$$$
-     $$$$                       <a href="mailto:nohri@nabla.ooo">nohri@nabla.ooo</a>                        $$$$
+     $$$$                      <a href="${email}">${email}</a>                    $$$$
       $§,$'$            ^                             ^            $'$,§$
      $' |$ $ $$s,^§, :  :::::: ..             .. ::::::  : ,§^ ,$$ $ $|  $
     _,,ÖssSSSSSSssss···,_    ^^§§,  😂😂😂😂 ,§§^^    _,···ssssSSSSSSssÖ,,_
 ,-§^  ,s§$$§^          ^§§s,     . . . : . . .     ,s§§^          ^§$$§s,  ^§-,
      ,§ $'                  '            '         '                  '$ §,
-    <a href="/nohri.xyz" style="text-decoration:none">^§$$§s,            😂😂😂😂😂😂😂😂😂😂😂😂😂😂😂😂😂😂😂              ,s§$$§^
-        ^§$$§s,          😂😂😂😂😂😂😂😂😂😂😂😂😂😂😂😂😂             ,s§$$§^
-             ^§§s,        😂😂😂😂😂😂😂😂😂😂😂😂😂😂😂😂           ,s§§^</a>
+    <a href="/nohri.xyz" style="text-decoration:none">^§$$§s,         😂😂😂😂😂😂😂😂😂😂😂😂😂😂😂😂😂😂😂         ,s§$$§^
+        ^§$$§s,       😂😂😂😂😂😂😂😂😂😂😂😂😂😂😂😂😂        ,s§$$§^
+             ^§§s,     😂😂😂😂😂😂😂😂😂😂😂😂😂😂😂😂      ,s§§^</a>
                 $$                                            $$
-                 :        Last updated: 23. Mar 2022.         :
+                 :        Last updated: ${lastUpdated}.         :
                  .                                            .</span>
   </div>
 `;
-
-function zoomOutMobile() {
-  var viewport = document.querySelector('meta[name="viewport"]');
-
-  if (viewport) {
-    viewport.content = "initial-scale=0.9";
-    viewport.content = "width=425";
-  }
-}
-
-const phrases = [wet];
-const el = document.querySelector('.wet');
-const fx = new TextScramble(el);
-
-let counter = 0;
-const next = () => {
-  fx.setText(phrases[counter]).then(() => {
-    setTimeout(next, 24000);
-  });
-  counter = (counter + 1) % phrases.length;
-  zoomOutMobile();
-};
-
-next();
